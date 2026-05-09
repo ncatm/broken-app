@@ -1,0 +1,66 @@
+use broken_app::concurrency;
+use broken_app::{algo, leak_buffer, normalize, sum_even, use_after_free};
+
+#[test]
+fn sums_even_numbers() {
+    let nums = [1, 2, 3, 4];
+    // Ожидаем корректное суммирование: 2 + 4 = 6.
+    assert_eq!(sum_even(&nums), 6);
+}
+
+#[test]
+fn counts_non_zero_bytes() {
+    let data = [0_u8, 1, 0, 2, 3];
+    assert_eq!(leak_buffer(&data), 3);
+}
+
+#[test]
+fn dedup_preserves_uniques() {
+    let uniq = algo::slow_dedup(&[5, 5, 1, 2, 2, 3]);
+    assert_eq!(uniq, vec![1, 2, 3, 5]); // порядок и состав важны
+}
+
+#[test]
+fn fib_small_numbers() {
+    assert_eq!(algo::slow_fib(10), 55);
+}
+
+#[test]
+fn normalize_simple() {
+    assert_eq!(normalize(" Hello World "), "helloworld");
+}
+
+#[test]
+fn averages_only_positive() {
+    let nums = [-5, 5, 15];
+    // Ожидается среднее только по положительным: (5 + 15) / 2 = 10.
+    assert!((broken_app::average_positive(&nums) - 10.0).abs() < f64::EPSILON);
+}
+
+#[test]
+fn sum_even_empty_slice() {
+    assert_eq!(sum_even(&[]), 0);
+}
+
+#[test]
+fn use_after_free_no_ub_doubles_boxed_value() {
+    assert_eq!(use_after_free(), 84);
+}
+
+#[test]
+fn race_increment_is_linearized() {
+    concurrency::reset_counter();
+    let total = concurrency::race_increment(250, 8);
+    assert_eq!(total, 250 * 8);
+}
+
+#[test]
+fn normalize_strips_all_whitespace() {
+    assert_eq!(normalize(" Hello\tWorld\n"), "helloworld");
+}
+
+#[test]
+fn average_positive_empty_and_no_positives() {
+    assert_eq!(broken_app::average_positive(&[]), 0.0);
+    assert_eq!(broken_app::average_positive(&[-1, -2]), 0.0);
+}
