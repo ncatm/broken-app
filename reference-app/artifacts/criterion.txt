@@ -1,0 +1,47 @@
+# criterion: cargo bench --bench criterion (reference-app)
+
+warning: unused import: `std::sync::Arc`
+ --> reference-app/src/concurrency.rs:2:5
+  |
+2 | use std::sync::Arc;
+  |     ^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `reference-app` (lib) generated 1 warning (run `cargo fix --lib -p reference-app` to apply 1 suggestion)
+    Finished `bench` profile [optimized] target(s) in 0.02s
+     Running benches/criterion.rs (target/release/deps/criterion)
+Gnuplot not found, using plotters backend
+Benchmarking sum_even_fast
+Benchmarking sum_even_fast: Warming up for 3.0000 s
+Benchmarking sum_even_fast: Collecting 100 samples in estimated 5.0209 s (783k iterations)
+Benchmarking sum_even_fast: Analyzing
+sum_even_fast           time:   [6.3649 µs 6.4085 µs 6.4973 µs]
+                        change: [+1.5045% +5.5740% +11.488%] (p = 0.02 < 0.05)
+                        Performance has regressed.
+Found 10 outliers among 100 measurements (10.00%)
+  3 (3.00%) high mild
+  7 (7.00%) high severe
+
+Benchmarking fast_fib
+Benchmarking fast_fib: Warming up for 3.0000 s
+Benchmarking fast_fib: Collecting 100 samples in estimated 5.0001 s (430M iterations)
+Benchmarking fast_fib: Analyzing
+fast_fib                time:   [11.603 ns 11.623 ns 11.643 ns]
+                        change: [-6.6689% -6.3624% -6.0624%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 2 outliers among 100 measurements (2.00%)
+  1 (1.00%) low mild
+  1 (1.00%) high mild
+
+Benchmarking fast_dedup
+Benchmarking fast_dedup: Warming up for 3.0000 s
+Benchmarking fast_dedup: Collecting 100 samples in estimated 5.2419 s (91k iterations)
+Benchmarking fast_dedup: Analyzing
+fast_dedup              time:   [56.395 µs 56.451 µs 56.509 µs]
+                        change: [-3.5179% -1.3932% -0.0990%] (p = 0.11 > 0.05)
+                        No change in performance detected.
+Found 3 outliers among 100 measurements (3.00%)
+  1 (1.00%) low severe
+  2 (2.00%) low mild
+

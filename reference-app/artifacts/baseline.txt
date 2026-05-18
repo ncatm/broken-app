@@ -1,0 +1,22 @@
+# baseline: cargo bench --bench baseline (reference-app)
+
+warning: unused import: `std::sync::Arc`
+ --> reference-app/src/concurrency.rs:2:5
+  |
+2 | use std::sync::Arc;
+  |     ^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `reference-app` (...) generated 1 warning (run `cargo fix --lib -p reference-app` to apply 1 suggestion)
+    Finished `bench` profile [optimized] target(s) in 0.02s
+     Running benches/baseline.rs (target/release/deps/baseline)
+sum_even: 6.583µs
+fast_fib: 42ns
+fast_dedup: 71.292µs
+sum_even: 6.5µs
+fast_fib: 42ns
+fast_dedup: 60.75µs
+sum_even: 6.417µs
+fast_fib: 42ns
+fast_dedup: 60.209µs

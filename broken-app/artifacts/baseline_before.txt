@@ -1,0 +1,13 @@
+# Замеры «до» (исходный код, commit 38ebe81)
+# Снимок исходников: artifacts/broken_src/
+# Скрипт: rustc -O artifacts/bench_before_snippet.rs
+
+slow_dedup (broken, n=5000*2): 7.366042ms
+slow_fib(20) (broken): 11.917µs
+slow_fib(25) (broken): 127.584µs
+slow_fib(30) (broken): 1.433666ms
+slow_fib(32) (broken, литерал n): 3.652291ms
+
+# cargo bench --bench baseline на сломанном коде:
+# — slow_fib(32) с переменной n экспоненциален, один прогон >7 мин (прерван);
+# — slow_dedup O(n²) с сортировкой на каждой вставке — основной узкий участок.

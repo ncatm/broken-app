@@ -1,0 +1,96 @@
+# Valgrind (Docker rust:1-bookworm, ./scripts/valgrind-docker.sh reference-app)
+# Результат: OK — definitely lost: 0, indirectly lost: 0
+# integration: 7 passed
+========== valgrind: /tmp/cargo-target/debug/deps/integration-2d9ec7bdb12a1237 ==========
+==1421== Memcheck, a memory error detector
+==1421== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==1421== Using Valgrind-3.19.0 and LibVEX; rerun with -h for copyright info
+==1421== Command: /tmp/cargo-target/debug/deps/integration-2d9ec7bdb12a1237
+==1421== 
+
+running 7 tests
+test averages_only_positive ... ok
+test dedup_preserves_uniques ... ok
+test sums_even_numbers ... ok
+test counts_non_zero_bytes ... ok
+test normalize_simple ... ok
+test fib_small_numbers ... ok
+test race_increment_is_correct ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.16s
+
+==1421== 
+==1421== HEAP SUMMARY:
+==1421==     in use at exit: 592 bytes in 2 blocks
+==1421==   total heap usage: 379 allocs, 377 frees, 48,016 bytes allocated
+==1421== 
+==1421== 48 bytes in 1 blocks are possibly lost in loss record 1 of 2
+==1421==    at 0x48850C8: malloc (vg_replace_malloc.c:381)
+==1421==    by 0x17C10F: alloc (unix.rs:14)
+==1421==    by 0x17C10F: alloc_impl (alloc.rs:151)
+==1421==    by 0x17C10F: allocate (alloc.rs:214)
+==1421==    by 0x17C10F: {closure#0}<std::thread::thread::Inner, std::alloc::System> (sync.rs:805)
+==1421==    by 0x17C10F: allocate_for_layout<core::mem::maybe_uninit::MaybeUninit<std::thread::thread::Inner>, alloc::sync::{impl#17}::new_uninit_in::{closure_env#0}<std::thread::thread::Inner, std::alloc::System>, fn(*mut u8) -> *mut alloc::sync::ArcInner<core::mem::maybe_uninit::MaybeUninit<std::thread::thread::Inner>>> (sync.rs:2162)
+==1421==    by 0x17C10F: new_uninit_in<std::thread::thread::Inner, std::alloc::System> (sync.rs:803)
+==1421==    by 0x17C10F: <std::thread::thread::Thread>::new (thread.rs:102)
+==1421==    by 0x11BD07: std::thread::current::init_current (current.rs:294)
+==1421==    by 0x11AC2B: current_or_unnamed (current.rs:251)
+==1421==    by 0x11AC2B: <std::sync::mpmc::context::Context>::new (context.rs:72)
+==1421==    by 0x116433: __rust_std_internal_init_fn (context.rs:43)
+==1421==    by 0x116433: call_once<fn() -> core::cell::Cell<core::option::Option<std::sync::mpmc::context::Context>>, ()> (function.rs:250)
+==1421==    by 0x116433: unwrap_or_else<core::cell::Cell<core::option::Option<std::sync::mpmc::context::Context>>, fn() -> core::cell::Cell<core::option::Option<std::sync::mpmc::context::Context>>> (option.rs:1067)
+==1421==    by 0x116433: <std::sys::thread_local::native::lazy::Storage<core::cell::Cell<core::option::Option<std::sync::mpmc::context::Context>>, ()>>::get_or_init_slow::<<std::sync::mpmc::context::Context>::with::CONTEXT::__rust_std_internal_init_fn> (lazy.rs:80)
+==1421==    by 0x1314EF: get_or_init<core::cell::Cell<core::option::Option<std::sync::mpmc::context::Context>>, (), fn() -> core::cell::Cell<core::option::Option<std::sync::mpmc::context::Context>>> (lazy.rs:62)
+==1421==    by 0x1314EF: {closure#0} (mod.rs:97)
+==1421==    by 0x1314EF: call_once<std::sync::mpmc::context::{impl#0}::with::CONTEXT::{constant#0}::{closure_env#0}, (core::option::Option<&mut core::option::Option<core::cell::Cell<core::option::Option<std::sync::mpmc::context::Context>>>>)> (function.rs:250)
+==1421==    by 0x1314EF: try_with<core::cell::Cell<core::option::Option<std::sync::mpmc::context::Context>>, std::sync::mpmc::context::{impl#0}::with::{closure_env#1}<std::sync::mpmc::list::{impl#3}::recv::{closure_env#1}<test::event::CompletedTest>, ()>, ()> (local.rs:512)
+==1421==    by 0x1314EF: with<std::sync::mpmc::list::{impl#3}::recv::{closure_env#1}<test::event::CompletedTest>, ()> (context.rs:53)
+==1421==    by 0x1314EF: <std::sync::mpmc::list::Channel<test::event::CompletedTest>>::recv (list.rs:442)
+==1421==    by 0x13B64F: recv_deadline<test::event::CompletedTest> (mod.rs:1120)
+==1421==    by 0x13B64F: recv_timeout<test::event::CompletedTest> (mod.rs:1052)
+==1421==    by 0x13B64F: recv_timeout<test::event::CompletedTest> (mpsc.rs:909)
+==1421==    by 0x13B64F: run_tests<test::console::run_tests_console::{closure_env#2}> (lib.rs:456)
+==1421==    by 0x13B64F: test::console::run_tests_console (console.rs:327)
+==1421==    by 0x12D19B: test_main_with_exit_callback<test::test_main::{closure_env#0}> (lib.rs:160)
+==1421==    by 0x12D19B: test::test_main (lib.rs:101)
+==1421==    by 0x12B3A7: test::test_main_static (lib.rs:183)
+==1421==    by 0x11DDF3: integration::main (integration.rs:1)
+==1421==    by 0x11D1E3: core::ops::function::FnOnce::call_once (library/core/src/ops/function.rs:250)
+==1421==    by 0x11D4F3: std::sys::backtrace::__rust_begin_short_backtrace (library/std/src/sys/backtrace.rs:166)
+==1421== 
+==1421== 544 bytes in 1 blocks are still reachable in loss record 2 of 2
+==1421==    at 0x48850C8: malloc (vg_replace_malloc.c:381)
+==1421==    by 0x18C72F: alloc (alloc.rs:95)
+==1421==    by 0x18C72F: alloc_impl_runtime (alloc.rs:190)
+==1421==    by 0x18C72F: alloc_impl (alloc.rs:312)
+==1421==    by 0x18C72F: allocate (alloc.rs:429)
+==1421==    by 0x18C72F: try_new_uninit_in<alloc::collections::btree::node::LeafNode<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo>, alloc::alloc::Global> (boxed.rs:614)
+==1421==    by 0x18C72F: new_uninit_in<alloc::collections::btree::node::LeafNode<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo>, alloc::alloc::Global> (boxed.rs:581)
+==1421==    by 0x18C72F: new<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (node.rs:87)
+==1421==    by 0x18C72F: new_leaf<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (node.rs:225)
+==1421==    by 0x18C72F: insert_entry<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (entry.rs:403)
+==1421==    by 0x18C72F: insert<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (entry.rs:377)
+==1421==    by 0x18C72F: insert<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (map.rs:1053)
+==1421==    by 0x18C72F: std::sys::pal::unix::stack_overflow::thread_info::set_current_info (thread_info.rs:122)
+==1421==    by 0x185367: init (stack_overflow.rs:179)
+==1421==    by 0x185367: init (mod.rs:41)
+==1421==    by 0x185367: init (rt.rs:118)
+==1421==    by 0x185367: {closure#0} (rt.rs:173)
+==1421==    by 0x185367: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:581)
+==1421==    by 0x185367: catch_unwind<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:544)
+==1421==    by 0x185367: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:359)
+==1421==    by 0x185367: std::rt::lang_start_internal (rt.rs:171)
+==1421==    by 0x11E077: std::rt::lang_start (library/std/src/rt.rs:205)
+==1421==    by 0x11DE2B: main (in /tmp/cargo-target/debug/deps/integration-2d9ec7bdb12a1237)
+==1421== 
+==1421== LEAK SUMMARY:
+==1421==    definitely lost: 0 bytes in 0 blocks
+==1421==    indirectly lost: 0 bytes in 0 blocks
+==1421==      possibly lost: 48 bytes in 1 blocks
+==1421==    still reachable: 544 bytes in 1 blocks
+==1421==         suppressed: 0 bytes in 0 blocks
+==1421== 
+==1421== For lists of detected and suppressed errors, rerun with: -s
+==1421== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+OK: /tmp/cargo-target/debug/deps/integration-2d9ec7bdb12a1237
+

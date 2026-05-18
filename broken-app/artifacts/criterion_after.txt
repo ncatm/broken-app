@@ -1,0 +1,34 @@
+   Compiling broken-app v0.1.0 (/Users/daniel/MyFolder/Yandex/Rust_Yandex/Sprint_5/broken-app/broken-app)
+    Finished `bench` profile [optimized] target(s) in 0.83s
+     Running benches/criterion.rs (target/release/deps/criterion)
+Gnuplot not found, using plotters backend
+Benchmarking sum_even
+Benchmarking sum_even: Warming up for 3.0000 s
+Benchmarking sum_even: Collecting 100 samples in estimated 5.0118 s (798k iterations)
+Benchmarking sum_even: Analyzing
+sum_even                time:   [6.2828 µs 6.2919 µs 6.3012 µs]
+Found 3 outliers among 100 measurements (3.00%)
+  1 (1.00%) low severe
+  1 (1.00%) low mild
+  1 (1.00%) high mild
+
+Benchmarking slow_fib
+Benchmarking slow_fib: Warming up for 3.0000 s
+Benchmarking slow_fib: Collecting 100 samples in estimated 5.0000 s (437M iterations)
+Benchmarking slow_fib: Analyzing
+slow_fib                time:   [11.431 ns 11.475 ns 11.524 ns]
+Found 9 outliers among 100 measurements (9.00%)
+  1 (1.00%) low severe
+  3 (3.00%) low mild
+  3 (3.00%) high mild
+  2 (2.00%) high severe
+
+Benchmarking slow_dedup
+Benchmarking slow_dedup: Warming up for 3.0000 s
+Benchmarking slow_dedup: Collecting 100 samples in estimated 5.2437 s (91k iterations)
+Benchmarking slow_dedup: Analyzing
+slow_dedup              time:   [56.328 µs 56.396 µs 56.464 µs]
+Found 4 outliers among 100 measurements (4.00%)
+  3 (3.00%) low mild
+  1 (1.00%) high severe
+
