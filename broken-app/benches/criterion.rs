@@ -1,5 +1,7 @@
 use broken_app::{algo, sum_even};
 use criterion::{criterion_group, criterion_main, BatchSize, Criterion};
+#[cfg(unix)]
+use pprof::criterion::{Output, PProfProfiler};
 
 fn bench_sum_even(c: &mut Criterion) {
     let data: Vec<i64> = (0..50_000).collect();
@@ -23,5 +25,19 @@ fn bench_dedup(c: &mut Criterion) {
     });
 }
 
-criterion_group!(benches, bench_sum_even, bench_fib, bench_dedup);
+#[cfg(unix)]
+fn criterion_config() -> Criterion {
+    Criterion::default().with_profiler(PProfProfiler::new(100, Output::Flamegraph(None)))
+}
+
+#[cfg(not(unix))]
+fn criterion_config() -> Criterion {
+    Criterion::default()
+}
+
+criterion_group! {
+    name = benches;
+    config = criterion_config();
+    targets = bench_sum_even, bench_fib, bench_dedup
+}
 criterion_main!(benches);

@@ -27,6 +27,19 @@
 
 Подробные логи: `artifacts/baseline_*.txt`, `artifacts/criterion_after.txt`.
 
+## Обязательные артефакты динамического анализа
+
+- ASan: `artifacts/asan.log`
+- TSan: `artifacts/tsan.log`
+- Flamegraph: `artifacts/flamegraph.svg`
+- Пояснение по горячим местам: `artifacts/profile_hotspots.txt`
+
+### Горячие места (по flamegraph)
+
+- ~93% сэмплов: `broken_app::algo::slow_dedup`
+- Основная вычислительная часть вне рантайма находится в дедупликации.
+- Системные обертки (`std::rt::lang_start_internal`) составляют 100% только как верхние фреймы стека.
+
 ## Регрессионные тесты
 
 - `tests/integration.rs` — тесты `regression_*`

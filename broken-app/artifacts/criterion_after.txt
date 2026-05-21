@@ -1,34 +1,232 @@
-   Compiling broken-app v0.1.0 (/Users/daniel/MyFolder/Yandex/Rust_Yandex/Sprint_5/broken-app/broken-app)
-    Finished `bench` profile [optimized] target(s) in 0.83s
-     Running benches/criterion.rs (target/release/deps/criterion)
+    Updating crates.io index
+ Downloading crates ...
+  Downloaded equivalent v1.0.2
+  Downloaded cfg-if v1.0.4
+  Downloaded ciborium-ll v0.2.2
+  Downloaded cast v0.3.0
+  Downloaded version_check v0.9.5
+  Downloaded adler2 v2.0.1
+  Downloaded same-file v1.0.6
+  Downloaded plotters-svg v0.3.7
+  Downloaded is-terminal v0.4.17
+  Downloaded plotters-backend v0.3.7
+  Downloaded debugid v0.8.0
+  Downloaded errno v0.3.14
+  Downloaded ciborium-io v0.2.2
+  Downloaded anstyle v1.0.14
+  Downloaded tinytemplate v1.2.1
+  Downloaded rgb v0.8.53
+  Downloaded thiserror-impl v1.0.69
+  Downloaded shlex v1.3.0
+  Downloaded fastrand v2.4.1
+  Downloaded findshlibs v0.10.2
+  Downloaded zmij v1.0.21
+  Downloaded str_stack v0.1.1
+  Downloaded scopeguard v1.2.0
+  Downloaded stable_deref_trait v1.2.1
+  Downloaded anes v0.1.6
+  Downloaded clap_lex v1.1.0
+  Downloaded either v1.15.0
+  Downloaded crossbeam-deque v0.8.6
+  Downloaded arrayvec v0.7.6
+  Downloaded itoa v1.0.18
+  Downloaded oorandom v11.1.5
+  Downloaded quote v1.0.45
+  Downloaded parking_lot_core v0.9.12
+  Downloaded memmap2 v0.9.10
+  Downloaded smallvec v1.15.1
+  Downloaded symbolic-common v12.18.3
+  Downloaded once_cell v1.21.4
+  Downloaded walkdir v2.5.0
+  Downloaded thiserror v1.0.69
+  Downloaded rustc-demangle v0.1.27
+  Downloaded addr2line v0.25.1
+  Downloaded ahash v0.8.12
+  Downloaded autocfg v1.5.0
+  Downloaded ciborium v0.2.2
+  Downloaded lock_api v0.4.14
+  Downloaded find-msvc-tools v0.1.9
+  Downloaded bitflags v1.3.2
+  Downloaded serde_derive v1.0.228
+  Downloaded criterion-plot v0.5.0
+  Downloaded unicode-ident v1.0.24
+  Downloaded proc-macro2 v1.0.106
+  Downloaded log v0.4.29
+  Downloaded parking_lot v0.12.5
+  Downloaded getrandom v0.3.4
+  Downloaded crossbeam-epoch v0.9.18
+  Downloaded crossbeam-utils v0.8.21
+  Downloaded clap v4.6.1
+  Downloaded num-format v0.4.4
+  Downloaded num-traits v0.2.19
+  Downloaded serde_core v1.0.228
+  Downloaded tempfile v3.27.0
+  Downloaded bitflags v2.11.1
+  Downloaded uuid v1.23.1
+  Downloaded bytemuck v1.25.0
+  Downloaded cpp_demangle v0.4.5
+  Downloaded getrandom v0.4.2
+  Downloaded serde v1.0.228
+  Downloaded memchr v2.8.0
+  Downloaded miniz_oxide v0.8.9
+  Downloaded pprof v0.13.0
+  Downloaded rayon-core v1.13.0
+  Downloaded half v2.7.1
+  Downloaded backtrace v0.3.76
+  Downloaded cc v1.2.62
+  Downloaded indexmap v2.14.0
+  Downloaded zerocopy-derive v0.8.48
+  Downloaded itertools v0.10.5
+  Downloaded quick-xml v0.26.0
+  Downloaded criterion v0.5.1
+  Downloaded inferno v0.11.21
+  Downloaded serde_json v1.0.149
+  Downloaded regex v1.12.3
+  Downloaded plotters v0.3.7
+  Downloaded hashbrown v0.17.1
+  Downloaded clap_builder v4.6.0
+  Downloaded symbolic-demangle v12.18.3
+  Downloaded aho-corasick v1.1.4
+  Downloaded rayon v1.12.0
+  Downloaded nix v0.26.4
+  Downloaded syn v2.0.117
+  Downloaded gimli v0.32.3
+  Downloaded zerocopy v0.8.48
+  Downloaded object v0.37.3
+  Downloaded regex-syntax v0.8.10
+  Downloaded rustix v1.1.4
+  Downloaded regex-automata v0.4.14
+  Downloaded libc v0.2.186
+  Downloaded linux-raw-sys v0.12.1
+   Compiling proc-macro2 v1.0.106
+   Compiling libc v0.2.186
+   Compiling quote v1.0.45
+   Compiling unicode-ident v1.0.24
+   Compiling cfg-if v1.0.4
+   Compiling zerocopy v0.8.48
+   Compiling serde_core v1.0.228
+   Compiling memchr v2.8.0
+   Compiling crossbeam-utils v0.8.21
+   Compiling serde v1.0.228
+   Compiling autocfg v1.5.0
+   Compiling itoa v1.0.18
+   Compiling zmij v1.0.21
+   Compiling version_check v0.9.5
+   Compiling serde_json v1.0.149
+   Compiling num-traits v0.2.19
+   Compiling rayon-core v1.13.0
+   Compiling find-msvc-tools v0.1.9
+   Compiling once_cell v1.21.4
+   Compiling getrandom v0.3.4
+   Compiling either v1.15.0
+   Compiling shlex v1.3.0
+   Compiling ahash v0.8.12
+   Compiling cc v1.2.62
+   Compiling crossbeam-epoch v0.9.18
+   Compiling clap_lex v1.1.0
+   Compiling plotters-backend v0.3.7
+   Compiling crossbeam-deque v0.8.6
+   Compiling object v0.37.3
+   Compiling syn v2.0.117
+   Compiling getrandom v0.4.2
+   Compiling rustix v1.1.4
+   Compiling anstyle v1.0.14
+   Compiling uuid v1.23.1
+   Compiling cpp_demangle v0.4.5
+   Compiling regex-syntax v0.8.10
+   Compiling ciborium-io v0.2.2
+   Compiling parking_lot_core v0.9.12
+   Compiling memmap2 v0.9.10
+   Compiling is-terminal v0.4.17
+   Compiling debugid v0.8.0
+   Compiling clap_builder v4.6.0
+   Compiling findshlibs v0.10.2
+   Compiling plotters-svg v0.3.7
+   Compiling itertools v0.10.5
+   Compiling same-file v1.0.6
+   Compiling adler2 v2.0.1
+   Compiling regex-automata v0.4.14
+   Compiling smallvec v1.15.1
+   Compiling equivalent v1.0.2
+   Compiling hashbrown v0.17.1
+   Compiling arrayvec v0.7.6
+   Compiling gimli v0.32.3
+   Compiling bytemuck v1.25.0
+   Compiling scopeguard v1.2.0
+   Compiling bitflags v2.11.1
+   Compiling symbolic-demangle v12.18.3
+   Compiling linux-raw-sys v0.12.1
+   Compiling thiserror v1.0.69
+   Compiling cast v0.3.0
+   Compiling rustc-demangle v0.1.27
+   Compiling stable_deref_trait v1.2.1
+   Compiling zerocopy-derive v0.8.48
+   Compiling serde_derive v1.0.228
+   Compiling addr2line v0.25.1
+   Compiling thiserror-impl v1.0.69
+   Compiling symbolic-common v12.18.3
+   Compiling criterion-plot v0.5.0
+   Compiling regex v1.12.3
+   Compiling lock_api v0.4.14
+   Compiling indexmap v2.14.0
+   Compiling rgb v0.8.53
+   Compiling clap v4.6.1
+   Compiling num-format v0.4.4
+   Compiling miniz_oxide v0.8.9
+   Compiling walkdir v2.5.0
+   Compiling plotters v0.3.7
+   Compiling rayon v1.12.0
+   Compiling quick-xml v0.26.0
+   Compiling log v0.4.29
+   Compiling oorandom v11.1.5
+   Compiling str_stack v0.1.1
+   Compiling anes v0.1.6
+   Compiling bitflags v1.3.2
+   Compiling fastrand v2.4.1
+   Compiling pprof v0.13.0
+   Compiling nix v0.26.4
+   Compiling tempfile v3.27.0
+   Compiling parking_lot v0.12.5
+   Compiling broken-app v0.1.0 (/workspace/broken-app)
+   Compiling backtrace v0.3.76
+   Compiling tinytemplate v1.2.1
+   Compiling half v2.7.1
+   Compiling inferno v0.11.21
+   Compiling ciborium-ll v0.2.2
+   Compiling ciborium v0.2.2
+   Compiling criterion v0.5.1
+    Finished `bench` profile [optimized] target(s) in 50.00s
+     Running benches/criterion.rs (/workspace/target/release/deps/criterion-2aa7d62d391f2908)
 Gnuplot not found, using plotters backend
 Benchmarking sum_even
 Benchmarking sum_even: Warming up for 3.0000 s
-Benchmarking sum_even: Collecting 100 samples in estimated 5.0118 s (798k iterations)
+Benchmarking sum_even: Collecting 100 samples in estimated 5.0145 s (783k iterations)
 Benchmarking sum_even: Analyzing
-sum_even                time:   [6.2828 µs 6.2919 µs 6.3012 µs]
-Found 3 outliers among 100 measurements (3.00%)
-  1 (1.00%) low severe
-  1 (1.00%) low mild
-  1 (1.00%) high mild
+sum_even                time:   [6.4065 µs 6.4494 µs 6.5286 µs]
+Found 12 outliers among 100 measurements (12.00%)
+  4 (4.00%) low severe
+  5 (5.00%) low mild
+  2 (2.00%) high mild
+  1 (1.00%) high severe
 
 Benchmarking slow_fib
 Benchmarking slow_fib: Warming up for 3.0000 s
-Benchmarking slow_fib: Collecting 100 samples in estimated 5.0000 s (437M iterations)
+Benchmarking slow_fib: Collecting 100 samples in estimated 5.0000 s (391M iterations)
 Benchmarking slow_fib: Analyzing
-slow_fib                time:   [11.431 ns 11.475 ns 11.524 ns]
-Found 9 outliers among 100 measurements (9.00%)
-  1 (1.00%) low severe
-  3 (3.00%) low mild
-  3 (3.00%) high mild
-  2 (2.00%) high severe
+slow_fib                time:   [12.646 ns 12.795 ns 12.992 ns]
+Found 18 outliers among 100 measurements (18.00%)
+  10 (10.00%) low severe
+  4 (4.00%) low mild
+  1 (1.00%) high mild
+  3 (3.00%) high severe
 
 Benchmarking slow_dedup
 Benchmarking slow_dedup: Warming up for 3.0000 s
-Benchmarking slow_dedup: Collecting 100 samples in estimated 5.2437 s (91k iterations)
+Benchmarking slow_dedup: Collecting 100 samples in estimated 5.3205 s (71k iterations)
 Benchmarking slow_dedup: Analyzing
-slow_dedup              time:   [56.328 µs 56.396 µs 56.464 µs]
-Found 4 outliers among 100 measurements (4.00%)
+slow_dedup              time:   [65.352 µs 65.792 µs 66.551 µs]
+Found 7 outliers among 100 measurements (7.00%)
+  1 (1.00%) low severe
   3 (3.00%) low mild
-  1 (1.00%) high severe
+  3 (3.00%) high severe
 

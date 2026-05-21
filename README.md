@@ -55,22 +55,23 @@ cargo +nightly miri test 2>&1 | tee artifacts/miri.log
 ### Sanitizers (nightly, Linux)
 
 ```bash
-cd broken-app
-RUSTFLAGS="-Zsanitizer=address" cargo +nightly test --tests
-RUSTFLAGS="-Zsanitizer=thread" cargo +nightly test --test concurrency
+# из корня репозитория (нужен Docker)
+./scripts/sanitizers-docker.sh broken-app
 ```
+
+Логи: `broken-app/artifacts/asan.log`, `broken-app/artifacts/tsan.log`.
 
 ## Профилирование
 
 ```bash
 cd broken-app
-cargo build --release
-# Linux:
-perf record -g ./target/release/demo
-perf report
+cargo run --release --bin profile_flamegraph
 ```
 
-Скрипт-шаблон: `broken-app/scripts/profile.sh`.
+Артефакты профиля:
+- `broken-app/artifacts/flamegraph.svg`
+- `broken-app/artifacts/profile_hotspots.txt`
+- `broken-app/artifacts/profile_run.log`
 
 ## Бенчмарки до/после
 

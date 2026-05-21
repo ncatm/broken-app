@@ -1,0 +1,11 @@
+# Hotspots from artifacts/flamegraph.svg
+# Source: cargo run --release --bin profile_flamegraph
+
+Top stacks (samples):
+- 93.48% (43/46): broken_app::algo::slow_dedup
+- 73.91% (34/46): broken_app::algo::slow_dedup (deeper frame)
+- 100% wrappers: profile_flamegraph::main / std::rt::lang_start_internal
+
+Conclusion:
+- Main hot path remains dedup pipeline (`slow_dedup` implementation),
+  which matches benchmark emphasis and optimization targets.

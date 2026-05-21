@@ -1,0 +1,4 @@
+   Compiling broken-app v0.1.0 (/Users/daniel/MyFolder/Yandex/Rust_Yandex/Sprint_5/broken-app/broken-app)
+    Finished `release` profile [optimized] target(s) in 0.38s
+     Running `/var/folders/7l/y7jb7ctx2g901td83ddn0rch0000gn/T/target-cache/5ab0cea4f2779c8a5269c4c5502fbc2f/cargo-target/release/profile_flamegraph`
+flamegraph saved to artifacts/flamegraph.svg
